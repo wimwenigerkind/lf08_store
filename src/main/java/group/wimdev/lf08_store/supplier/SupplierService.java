@@ -34,4 +34,8 @@ public class SupplierService {
         updatedSupplier.getContact().setPhone(supplier.getContact().getPhone());
         return supplierRepository.save(updatedSupplier);
     }
+
+    public void delete(Long id) {
+        supplierRepository.deleteById(id);
+    }
 }
