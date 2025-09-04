@@ -13,6 +13,10 @@ public class SupplierService {
         this.supplierRepository = supplierRepository;
     }
 
+    public SupplierEntity create(SupplierEntity supplier) {
+        return this.supplierRepository.save(supplier);
+    }
+
     public List<SupplierEntity> readAll() {
         return supplierRepository.findAll();
     }
