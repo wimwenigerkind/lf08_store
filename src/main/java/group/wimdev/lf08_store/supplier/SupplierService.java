@@ -14,7 +14,7 @@ public class SupplierService {
     }
 
     public SupplierEntity create(SupplierEntity supplier) {
-        return this.supplierRepository.save(supplier);
+        return supplierRepository.save(supplier);
     }
 
     public List<SupplierEntity> readAll() {
@@ -32,6 +32,6 @@ public class SupplierService {
         updatedSupplier.getContact().setPostcode(supplier.getContact().getPostcode());
         updatedSupplier.getContact().setCity(supplier.getContact().getCity());
         updatedSupplier.getContact().setPhone(supplier.getContact().getPhone());
-        return this.supplierRepository.save(updatedSupplier);
+        return supplierRepository.save(updatedSupplier);
     }
 }
