@@ -56,4 +56,10 @@ public class SupplierController {
         final var dtoUpdated = this.mappingService.mapSupplierToGetSupplierDto(updatedEntity);
         return new ResponseEntity<>(dtoUpdated, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSupplier(@PathVariable final Long id) {
+        this.supplierService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
