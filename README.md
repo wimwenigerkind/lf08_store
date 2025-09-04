@@ -21,3 +21,8 @@ xh post http://localhost:8080/store/supplier name=Supplier01 street=SupplierStre
 ```shell
 xh put http://localhost:8080/store/supplier/1 name=Supplier01 street=SupplierStreet01 postcode=88888 city=SupplierCityO1
 ```
+
+### deleteSupplier
+```shell
+xh delete http://localhost:8080/store/supplier/1
+```
