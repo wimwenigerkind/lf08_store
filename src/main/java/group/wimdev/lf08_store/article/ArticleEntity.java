@@ -1,5 +1,6 @@
 package group.wimdev.lf08_store.article;
 
+import group.wimdev.lf08_store.supplier.SupplierEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,4 +30,7 @@ public class ArticleEntity {
 
     @Column(name = "last_update_date", nullable = false)
     private LocalDateTime lastUpdateDate = LocalDateTime.now();
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private SupplierEntity supplier;
 }

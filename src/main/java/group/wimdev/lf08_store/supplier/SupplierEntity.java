@@ -1,5 +1,6 @@
 package group.wimdev.lf08_store.supplier;
 
+import group.wimdev.lf08_store.article.ArticleEntity;
 import group.wimdev.lf08_store.contact.ContactEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -22,4 +23,7 @@ public class SupplierEntity {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ContactEntity contact;
+
+    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<ArticleEntity> articles;
 }
