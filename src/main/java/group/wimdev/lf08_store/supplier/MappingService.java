@@ -30,4 +30,15 @@ public class MappingService {
         }
         return dto;
     }
+
+    public void updateSupplierFromDto(SupplierEntity supplier, AddSupplierDto dto) {
+        supplier.setName(dto.getName());
+        
+        if (supplier.getContact() != null) {
+            supplier.getContact().setStreet(dto.getStreet());
+            supplier.getContact().setPostcode(dto.getPostcode());
+            supplier.getContact().setCity(dto.getCity());
+            supplier.getContact().setPhone(dto.getPhone());
+        }
+    }
 }

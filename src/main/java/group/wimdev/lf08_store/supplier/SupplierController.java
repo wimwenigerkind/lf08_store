@@ -4,16 +4,17 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.LinkedList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/store/supplier")
 public class SupplierController {
-    
+
     private final SupplierService supplierService;
     private final MappingService mappingService;
-    
+
     public SupplierController(SupplierService supplierService, MappingService mappingService) {
         this.supplierService = supplierService;
         this.mappingService = mappingService;
@@ -42,5 +43,17 @@ public class SupplierController {
         final var entity = this.supplierService.readById(id);
         final GetSupplierDto dto = this.mappingService.mapSupplierToGetSupplierDto(entity);
         return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<GetSupplierDto> updateSupplier(@PathVariable final Long id, @Valid @RequestBody final AddSupplierDto dto) {
+        final var entity = this.supplierService.readById(id);
+        if (entity == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        this.mappingService.updateSupplierFromDto(entity, dto);
+        final var updatedEntity = this.supplierService.update(entity);
+        final var dtoUpdated = this.mappingService.mapSupplierToGetSupplierDto(updatedEntity);
+        return new ResponseEntity<>(dtoUpdated, HttpStatus.OK);
     }
 }
