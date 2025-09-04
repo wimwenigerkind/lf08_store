@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class AddSupplierDTO {
+public class AddSupplierDto {
     @NotBlank(message = "Name is mandatory")
     @Size(max = 50, message = "Name must not exceed 50 characters")
     private String name;
