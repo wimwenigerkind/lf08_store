@@ -12,4 +12,22 @@ public class SupplierService {
     public SupplierService(SupplierRepository supplierRepository) {
         this.supplierRepository = supplierRepository;
     }
+
+    public List<SupplierEntity> readAll() {
+        return supplierRepository.findAll();
+    }
+
+    public SupplierEntity readById(Long id) {
+        return supplierRepository.findById(id).orElse(null);
+    }
+
+    public SupplierEntity update(SupplierEntity supplier) {
+        SupplierEntity updatedSupplier = readById(supplier.getId());
+        updatedSupplier.setName(supplier.getName());
+        updatedSupplier.getContact().setStreet(supplier.getContact().getStreet());
+        updatedSupplier.getContact().setPostcode(supplier.getContact().getPostcode());
+        updatedSupplier.getContact().setCity(supplier.getContact().getCity());
+        updatedSupplier.getContact().setPhone(supplier.getContact().getPhone());
+        return this.supplierRepository.save(updatedSupplier);
+    }
 }
