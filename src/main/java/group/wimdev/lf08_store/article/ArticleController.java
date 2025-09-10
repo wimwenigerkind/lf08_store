@@ -44,4 +44,12 @@ public class ArticleController {
         final GetArticleDto dto = this.mappingService.mapArticleToGetArticleDto(entity);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<GetArticleDto> createArticleForSupplier(@PathVariable final Long id, @Valid @RequestBody final AddArticleDto dto) {
+        ArticleEntity newArticle = this.mappingService.mapAddArticleDtoToArticle(dto);
+        newArticle = this.articleService.createForSupplier(newArticle, id);
+        final GetArticleDto response = this.mappingService.mapArticleToGetArticleDto(newArticle);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
 }
