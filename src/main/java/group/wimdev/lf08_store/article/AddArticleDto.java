@@ -15,7 +15,4 @@ public class AddArticleDto {
     @NotNull(message = "Price is mandatory")
     @Positive(message = "Price must be positive")
     private Double price;
-
-    @NotNull(message = "Supplier ID is mandatory")
-    private Long supplierId;
 }
