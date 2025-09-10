@@ -2,7 +2,7 @@ package group.wimdev.lf08_store.article;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("articleMappingService")
 public class MappingService {
     public ArticleEntity mapAddArticleDtoToArticle(AddArticleDto dto) {
         ArticleEntity newArticle = new ArticleEntity();
