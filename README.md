@@ -27,6 +27,11 @@ xh put http://localhost:8080/store/supplier/1 name=Supplier01 street=SupplierStr
 xh delete http://localhost:8080/store/supplier/1
 ```
 
+### getArticlesBySupplierId
+```shell
+xh http://localhost:8080/store/supplier/1/articles
+```
+
 ## Article
 
 ### findAllArticles
