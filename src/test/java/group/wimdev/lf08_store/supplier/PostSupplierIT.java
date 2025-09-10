@@ -37,7 +37,7 @@ public class PostSupplierIT extends AbstractIntegrationTest {
                 .getResponse()
                 .getContentAsString();
 
-        final var id = Long.parseLong(new JSONObject(contentAsString).get("sid").toString());
+        final var id = Long.parseLong(new JSONObject(contentAsString).get("id").toString());
 
         final var loadedEntity = supplierRepository.findById(id);
         assertThat(loadedEntity.get().getName()).isEqualTo("Meier");
