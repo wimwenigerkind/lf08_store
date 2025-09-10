@@ -56,11 +56,11 @@ public class PostArticleForSupplierByIdIT extends AbstractIntegrationTest {
     @Test
     void postArticleForNonExistentSupplierId() throws Exception {
         String content = """
-            {
-                "designation": "InvalidArticle",
-                "price": 10.0
-            }
-            """;
+                {
+                    "designation": "InvalidArticle",
+                    "price": 10.0
+                }
+                """;
 
         this.mockMvc.perform(
                         post("/store/article/{id}", 9999L)
