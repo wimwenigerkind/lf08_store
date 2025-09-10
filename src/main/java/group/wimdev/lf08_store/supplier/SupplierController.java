@@ -1,5 +1,6 @@
 package group.wimdev.lf08_store.supplier;
 
+import group.wimdev.lf08_store.article.GetArticleDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,5 +62,12 @@ public class SupplierController {
     public ResponseEntity<Void> deleteSupplier(@PathVariable final Long id) {
         this.supplierService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/{id}/articles")
+    public ResponseEntity<List<GetArticleDto>> getArticlesBySupplierId(@PathVariable final Long id) {
+        final var articles = this.supplierService.getArticlesBySupplierId(id);
+        final List<GetArticleDto> articleDtos = this.mappingService.mapArticlesToGetArticleDtos(articles);
+        return new ResponseEntity<>(articleDtos, HttpStatus.OK);
     }
 }
