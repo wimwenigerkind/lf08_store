@@ -26,3 +26,25 @@ xh put http://localhost:8080/store/supplier/1 name=Supplier01 street=SupplierStr
 ```shell
 xh delete http://localhost:8080/store/supplier/1
 ```
+
+## Article
+
+### findAllArticles
+```shell
+xh http://localhost:8080/store/article
+```
+
+### getArticleById
+```shell
+xh http://localhost:8080/store/article/1
+```
+
+### getArticleByDesignation
+```shell
+xh http://localhost:8080/store/article/designation/ArticleDesignation01
+```
+
+### createArticleForSupplier
+```shell
+xh post http://localhost:8080/store/article/1 designation=ArticleDesignation01 price:=29.99
+```
