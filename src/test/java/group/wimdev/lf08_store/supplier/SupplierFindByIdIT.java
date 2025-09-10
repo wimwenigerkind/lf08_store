@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class SupplierFindById extends AbstractIntegrationTest {
+public class SupplierFindByIdIT extends AbstractIntegrationTest {
     @Test
     void findById() throws Exception {
         var supplier1 = new SupplierEntity();
