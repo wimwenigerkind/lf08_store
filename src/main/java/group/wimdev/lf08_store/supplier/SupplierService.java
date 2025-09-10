@@ -1,9 +1,11 @@
 package group.wimdev.lf08_store.supplier;
 
+import group.wimdev.lf08_store.exceptionhandling.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SupplierService {
@@ -22,7 +24,11 @@ public class SupplierService {
     }
 
     public SupplierEntity readById(Long id) {
-        return supplierRepository.findById(id).orElse(null);
+        Optional<SupplierEntity> supplier = supplierRepository.findById(id);
+        if (supplier.isEmpty()) {
+            throw new ResourceNotFoundException("Supplier with id " + id + " not found");
+        }
+        return supplier.get();
     }
 
     public SupplierEntity update(SupplierEntity supplier) {
