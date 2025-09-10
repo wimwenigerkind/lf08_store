@@ -1,7 +1,13 @@
 package group.wimdev.lf08_store.supplier;
 
+import group.wimdev.lf08_store.article.ArticleEntity;
+import group.wimdev.lf08_store.article.GetArticleDto;
 import group.wimdev.lf08_store.contact.ContactEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class MappingService {
@@ -40,5 +46,19 @@ public class MappingService {
             supplier.getContact().setCity(dto.getCity());
             supplier.getContact().setPhone(dto.getPhone());
         }
+    }
+
+    public List<GetArticleDto> mapArticlesToGetArticleDtos(Set<ArticleEntity> articles) {
+        return articles.stream()
+                .map(this::mapArticleToGetArticleDto)
+                .collect(Collectors.toList());
+    }
+
+    private GetArticleDto mapArticleToGetArticleDto(ArticleEntity article) {
+        GetArticleDto dto = new GetArticleDto();
+        dto.setId(article.getId());
+        dto.setDesignation(article.getDesignation());
+        dto.setPrice(article.getPrice());
+        return dto;
     }
 }
