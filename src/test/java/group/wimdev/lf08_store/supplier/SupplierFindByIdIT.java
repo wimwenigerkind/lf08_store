@@ -22,9 +22,9 @@ public class SupplierFindByIdIT extends AbstractIntegrationTest {
         contact1.setPhone("+4912345");
         supplier1.setContact(contact1);
 
-        this.supplierRepository.save(supplier1);
+        var savedSupplier = this.supplierRepository.save(supplier1);
 
-        this.mockMvc.perform(get("/store/supplier/1"))
+        this.mockMvc.perform(get("/store/supplier/" + savedSupplier.getId()))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.name", is("Meier")))
