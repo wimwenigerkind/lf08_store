@@ -1,10 +1,12 @@
 package group.wimdev.lf08_store.supplier;
 
+import group.wimdev.lf08_store.article.ArticleEntity;
 import group.wimdev.lf08_store.exceptionhandling.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class SupplierService {
@@ -42,5 +44,10 @@ public class SupplierService {
 
     public void delete(Long id) {
         supplierRepository.deleteById(id);
+    }
+
+    public Set<ArticleEntity> getArticlesBySupplierId(Long supplierId) {
+        SupplierEntity supplier = readById(supplierId);
+        return supplier.getArticles();
     }
 }
