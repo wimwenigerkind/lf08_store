@@ -32,8 +32,8 @@ public class ArticleService {
 
     public ArticleEntity update(ArticleEntity article) {
         ArticleEntity updatedArticle = readById(article.getId());
-        updatedArticle.setDesignation(article.getName());
-        updatedArticle.setPrice(article.getDescription());
+        updatedArticle.setDesignation(article.getDesignation());
+        updatedArticle.setPrice(article.getPrice());
         updatedArticle.setPrice(article.getPrice());
         updatedArticle.setSupplier(article.getSupplier());
         return articleRepository.save(updatedArticle);
