@@ -9,4 +9,8 @@ public class ArticleService {
     public ArticleService(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
     }
+
+    public ArticleEntity create(ArticleEntity article) {
+        return articleRepository.save(article);
+    }
 }
