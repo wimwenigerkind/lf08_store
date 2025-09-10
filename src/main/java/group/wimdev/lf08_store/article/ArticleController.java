@@ -20,4 +20,14 @@ public class ArticleController {
         this.articleService = articleService;
         this.mappingService = mappingService;
     }
+
+    @GetMapping
+    public ResponseEntity<List<GetArticleDto>> findAllArticles() {
+        List<ArticleEntity> all = this.articleService.readAll();
+        List<GetArticleDto> dtoList = new LinkedList<>();
+        for (ArticleEntity article : all) {
+            dtoList.add(this.mappingService.mapArticleToGetArticleDto(article));
+        }
+        return new ResponseEntity<>(dtoList, HttpStatus.OK);
+    }
 }
