@@ -1,7 +1,6 @@
 package group.wimdev.lf08_store.supplier;
 
 import group.wimdev.lf08_store.exceptionhandling.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
