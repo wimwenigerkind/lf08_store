@@ -31,6 +31,6 @@ public class ArticleEntity {
     @Column(name = "last_update_date", nullable = false)
     private LocalDateTime lastUpdateDate = LocalDateTime.now();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private SupplierEntity supplier;
 }
