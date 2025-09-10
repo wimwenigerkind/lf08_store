@@ -52,4 +52,21 @@ public class PostArticleForSupplierByIdIT extends AbstractIntegrationTest {
             assert supplier.getArticles().stream().anyMatch(article -> article.getDesignation().equals("ArticleDesignation01") && article.getPrice() == 29.99);
         });
     }
+
+    @Test
+    void postArticleForNonExistentSupplierId() throws Exception {
+        String content = """
+            {
+                "designation": "InvalidArticle",
+                "price": 10.0
+            }
+            """;
+
+        this.mockMvc.perform(
+                        post("/store/article/{id}", 9999L)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(content))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("message", is("Supplier with id 9999 not found")));
+    }
 }
