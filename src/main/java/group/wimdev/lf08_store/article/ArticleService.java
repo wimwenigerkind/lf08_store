@@ -38,4 +38,8 @@ public class ArticleService {
         updatedArticle.setSupplier(article.getSupplier());
         return articleRepository.save(updatedArticle);
     }
+
+    public void delete(Long id) {
+        articleRepository.deleteById(id);
+    }
 }
