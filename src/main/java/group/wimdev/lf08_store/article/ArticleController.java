@@ -30,4 +30,11 @@ public class ArticleController {
         }
         return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GetArticleDto> getArticleById(@PathVariable final Long id) {
+        final var entity = this.articleService.readById(id);
+        final GetArticleDto dto = this.mappingService.mapArticleToGetArticleDto(entity);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
 }
