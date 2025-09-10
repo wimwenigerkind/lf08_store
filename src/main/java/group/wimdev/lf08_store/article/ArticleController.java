@@ -37,4 +37,11 @@ public class ArticleController {
         final GetArticleDto dto = this.mappingService.mapArticleToGetArticleDto(entity);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
+    @GetMapping("/designation/{designation}")
+    public ResponseEntity<GetArticleDto> getArticleByDesignation(@PathVariable final String designation) {
+        final var entity = this.articleService.readByDesignation(designation);
+        final GetArticleDto dto = this.mappingService.mapArticleToGetArticleDto(entity);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
 }
