@@ -25,6 +25,10 @@ public class ArticleEntity {
 
     @NotNull
     private Double price;
+
+    @NotNull
+    private String currency;
+
     @Column(name = "create_date", nullable = false)
     private LocalDateTime createDate = LocalDateTime.now();
 

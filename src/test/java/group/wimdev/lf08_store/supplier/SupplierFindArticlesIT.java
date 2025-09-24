@@ -35,11 +35,13 @@ public class SupplierFindArticlesIT extends AbstractIntegrationTest {
         var article1 = new ArticleEntity();
         article1.setDesignation("Test Article 1");
         article1.setPrice(25.50);
+        article1.setCurrency("USD");
         this.articleService.createForSupplier(article1, savedSupplier.getId());
 
         var article2 = new ArticleEntity();
         article2.setDesignation("Test Article 2");
         article2.setPrice(15.99);
+        article2.setCurrency("USD");
         this.articleService.createForSupplier(article2, savedSupplier.getId());
 
         this.mockMvc.perform(get("/store/supplier/" + savedSupplier.getId() + "/articles"))

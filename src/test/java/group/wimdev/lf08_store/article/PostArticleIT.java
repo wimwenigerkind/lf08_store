@@ -32,7 +32,8 @@ public class PostArticleIT extends AbstractIntegrationTest {
         String content = """
                 {
                     "designation": "Test Article",
-                    "price": 29.99
+                    "price": 29.99,
+                    "currency": "USD"
                 }
                 """;
 
@@ -42,6 +43,7 @@ public class PostArticleIT extends AbstractIntegrationTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("designation", is("Test Article")))
                 .andExpect(jsonPath("price", is(29.99)))
+                .andExpect(jsonPath("currency", is("USD")))
                 .andReturn()
                 .getResponse()
                 .getContentAsString();

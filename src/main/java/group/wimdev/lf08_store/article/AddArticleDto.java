@@ -15,4 +15,8 @@ public class AddArticleDto {
     @NotNull(message = "Price is mandatory")
     @Positive(message = "Price must be positive")
     private Double price;
+
+    @NotBlank(message = "Currency is mandatory")
+    @Size(max = 3, message = "Currency must be ISO 4217 code (3 characters)")
+    private String currency;
 }

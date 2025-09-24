@@ -32,6 +32,7 @@ public class ArticleFindByDesignationIT extends AbstractIntegrationTest {
         var article = new ArticleEntity();
         article.setDesignation("UniqueDesignation123");
         article.setPrice(99.99);
+        article.setCurrency("USD");
         article.setSupplier(savedSupplier);
         article.setCreateDate(LocalDateTime.now());
         article.setLastUpdateDate(LocalDateTime.now());

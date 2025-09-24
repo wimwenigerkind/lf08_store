@@ -32,6 +32,7 @@ public class ArticleFindByIdIT extends AbstractIntegrationTest {
         var article = new ArticleEntity();
         article.setDesignation("Test Article by ID");
         article.setPrice(45.75);
+        article.setCurrency("USD");
         article.setSupplier(savedSupplier);
         article.setCreateDate(LocalDateTime.now());
         article.setLastUpdateDate(LocalDateTime.now());

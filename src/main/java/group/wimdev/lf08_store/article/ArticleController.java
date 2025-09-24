@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -22,26 +21,20 @@ public class ArticleController {
     }
 
     @GetMapping
-    public ResponseEntity<List<GetArticleDto>> findAllArticles() {
-        List<ArticleEntity> all = this.articleService.readAll();
-        List<GetArticleDto> dtoList = new LinkedList<>();
-        for (ArticleEntity article : all) {
-            dtoList.add(this.mappingService.mapArticleToGetArticleDto(article));
-        }
+    public ResponseEntity<List<GetArticleDto>> findAllArticles(@RequestParam(required = false) String currency) {
+        List<GetArticleDto> dtoList = this.articleService.readAllWithCurrency(currency);
         return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetArticleDto> getArticleById(@PathVariable final Long id) {
-        final var entity = this.articleService.readById(id);
-        final GetArticleDto dto = this.mappingService.mapArticleToGetArticleDto(entity);
+    public ResponseEntity<GetArticleDto> getArticleById(@PathVariable final Long id, @RequestParam(required = false) String currency) {
+        final GetArticleDto dto = this.articleService.readByIdWithCurrency(id, currency);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
     @GetMapping("/designation/{designation}")
-    public ResponseEntity<GetArticleDto> getArticleByDesignation(@PathVariable final String designation) {
-        final var entity = this.articleService.readByDesignation(designation);
-        final GetArticleDto dto = this.mappingService.mapArticleToGetArticleDto(entity);
+    public ResponseEntity<GetArticleDto> getArticleByDesignation(@PathVariable final String designation, @RequestParam(required = false) String currency) {
+        final GetArticleDto dto = this.articleService.readByDesignationWithCurrency(designation, currency);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 

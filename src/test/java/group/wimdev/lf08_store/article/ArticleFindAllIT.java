@@ -32,6 +32,7 @@ public class ArticleFindAllIT extends AbstractIntegrationTest {
         var article = new ArticleEntity();
         article.setDesignation("Test Article 1");
         article.setPrice(25.50);
+        article.setCurrency("USD");
         article.setSupplier(savedSupplier);
         article.setCreateDate(LocalDateTime.now());
         article.setLastUpdateDate(LocalDateTime.now());

@@ -8,6 +8,7 @@ public class MappingService {
         ArticleEntity newArticle = new ArticleEntity();
         newArticle.setDesignation(dto.getDesignation());
         newArticle.setPrice(dto.getPrice());
+        newArticle.setCurrency(dto.getCurrency());
         return newArticle;
     }
 
@@ -16,11 +17,13 @@ public class MappingService {
         dto.setId(article.getId());
         dto.setDesignation(article.getDesignation());
         dto.setPrice(article.getPrice());
+        dto.setCurrency(article.getCurrency());
         return dto;
     }
 
     public void updateArticleFromDto(ArticleEntity article, AddArticleDto dto) {
         article.setDesignation(dto.getDesignation());
         article.setPrice(dto.getPrice());
+        article.setCurrency(dto.getCurrency());
     }
 }

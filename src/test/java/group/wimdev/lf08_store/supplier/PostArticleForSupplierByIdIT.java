@@ -29,7 +29,8 @@ public class PostArticleForSupplierByIdIT extends AbstractIntegrationTest {
         String content = """
                 {
                          "designation": "ArticleDesignation01",
-                         "price": 29.99
+                         "price": 29.99,
+                         "currency": "USD"
                 }
                 """;
 
@@ -40,6 +41,7 @@ public class PostArticleForSupplierByIdIT extends AbstractIntegrationTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("designation", is("ArticleDesignation01")))
                 .andExpect(jsonPath("price", is(29.99)))
+                .andExpect(jsonPath("currency", is("USD")))
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -58,7 +60,8 @@ public class PostArticleForSupplierByIdIT extends AbstractIntegrationTest {
         String content = """
                 {
                     "designation": "InvalidArticle",
-                    "price": 10.0
+                    "price": 10.0,
+                    "currency": "USD"
                 }
                 """;
 
